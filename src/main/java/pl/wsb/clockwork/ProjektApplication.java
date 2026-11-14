@@ -1,4 +1,4 @@
-package pl.wsb.projekt;
+package pl.wsb.clockwork;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
