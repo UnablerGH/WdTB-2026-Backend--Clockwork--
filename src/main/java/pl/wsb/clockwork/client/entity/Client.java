@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.wsb.clockwork.project.entity.Project;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
@@ -30,4 +34,8 @@ public class Client {
 
     @Embedded
     private Address billingAddress;
+
+    /** Projekty klienta: drugi koniec relacji Project.client (nie tworzy nowej kolumny). */
+    @OneToMany(mappedBy = "client")
+    private List<Project> projects = new ArrayList<>();
 }
