@@ -20,6 +20,8 @@
         <java.version>21</java.version>
         <archunit.version>1.4.1</archunit.version>
         <springdoc.version>2.8.13</springdoc.version>
+        <!-- Lombok 1.18.46 (domyślny w Spring Boot 3.5.14) nie działa na JDK 27: ExceptionInInitializerError EndPosTable -->
+        <lombok.version>1.18.48</lombok.version>
         <!--
             Numer laboratorium, którego reguły projektu są aktywne.
             Lokalnie podnosisz go sam na początku każdego laboratorium.
