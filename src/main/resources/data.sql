@@ -33,3 +33,9 @@ insert into project_member (project_id, user_account_id, role, hourly_rate_overr
     (1, 2, 'DEVELOPER', 140.00, '2026-03-02'),
     (2, 2, 'OWNER',     null,   '2026-03-05'),
     (2, 3, 'REVIEWER',  120.00, '2026-03-06');
+
+-- ===== LAB 03 · freelancer_profile (jeden profil na konto: user_account_id bez powtórzeń) =====
+insert into freelancer_profile (user_account_id, company_name, tax_id, default_hourly_rate, currency) values
+    (1, 'Pietrzak Software',  'PL8971234567', 150.00, 'PLN'),
+    (2, 'Jaśkowiak Dev',      'PL8987654321', 140.00, 'PLN'),
+    (3, 'Kaczor IT Services', null,           130.00, 'PLN');
