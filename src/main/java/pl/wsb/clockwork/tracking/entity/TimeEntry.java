@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import pl.wsb.clockwork.project.entity.Project;
+
 import java.time.LocalDate;
 
 @Entity
@@ -33,4 +35,9 @@ public class TimeEntry {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private TimeEntryStatus status = TimeEntryStatus.DRAFT;
+
+    /** Projekt, do którego przypisano czas pracy (wiele wpisów → jeden projekt). */
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
 }
