@@ -21,8 +21,8 @@ insert into project (name, hourly_rate, currency, archived, client_id) values
     ('Aplikacja mobilna CRM',       185.00, 'PLN', false, 2),
     ('Migracja bazy danych',        150.00, 'PLN', true,  1);
 
--- time_entry (status: enum TimeEntryStatus zapisany jako tekst; project_id: numer wiersza z tabeli project)
-insert into time_entry (task_description, work_date, duration_minutes, billable, status, project_id) values
-    ('Implementacja API koszyka i walidacji',     '2026-03-10', 180, true,  'INVOICED', 1),
-    ('Konfiguracja środowiska testowego i CI/CD', '2026-03-11', 120, true,  'APPROVED', 1),
-    ('Spotkanie statusowe i wycena nowego etapu', '2026-03-12', 45,  false, 'DRAFT',    2);
+-- time_entry (status: enum TimeEntryStatus zapisany jako tekst; project_id i user_account_id: numery wierszy z tabel project i user_account)
+insert into time_entry (task_description, work_date, duration_minutes, billable, status, project_id, user_account_id) values
+    ('Implementacja API koszyka i walidacji',     '2026-03-10', 180, true,  'INVOICED', 1, 1),
+    ('Konfiguracja środowiska testowego i CI/CD', '2026-03-11', 120, true,  'APPROVED', 1, 2),
+    ('Spotkanie statusowe i wycena nowego etapu', '2026-03-12', 45,  false, 'DRAFT',    2, 3);

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import pl.wsb.clockwork.account.domain.UserAccount;
 import pl.wsb.clockwork.project.entity.Project;
 
 import java.time.LocalDate;
@@ -40,4 +41,9 @@ public class TimeEntry {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
+
+    /** Osoba, która zalogowała czas (wiele wpisów → jedno konto). */
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_account_id", nullable = false)
+    private UserAccount userAccount;
 }
