@@ -1,6 +1,7 @@
 package pl.wsb.clockwork.profile.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import java.math.BigDecimal;
 @Table(name = "freelancer_profile")
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class FreelancerProfile {
 
     @Id

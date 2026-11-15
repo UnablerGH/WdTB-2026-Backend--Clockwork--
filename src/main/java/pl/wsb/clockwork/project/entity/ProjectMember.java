@@ -1,6 +1,7 @@
 package pl.wsb.clockwork.project.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,7 @@ import java.time.LocalDate;
         uniqueConstraints = @UniqueConstraint(columnNames = {"project_id", "user_account_id"}))
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ProjectMember {
 
     @Id
