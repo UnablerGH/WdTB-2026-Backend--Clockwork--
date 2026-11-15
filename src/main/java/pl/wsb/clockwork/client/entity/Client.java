@@ -1,15 +1,20 @@
 package pl.wsb.clockwork.client.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.wsb.clockwork.project.entity.Project;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "client")
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Client {
 
     @Id
@@ -30,4 +35,8 @@ public class Client {
 
     @Embedded
     private Address billingAddress;
+
+    /** Projekty klienta: drugi koniec relacji Project.client (nie tworzy nowej kolumny). */
+    @OneToMany(mappedBy = "client")
+    private List<Project> projects = new ArrayList<>();
 }
