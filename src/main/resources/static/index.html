@@ -57,12 +57,17 @@
       <li><b>LAB 02:</b> encje i dane startowe dla tabel <code>client</code>, <code>project</code>, <code>time_entry</code>;
         status wpisu czasu jako enum <code>TimeEntryStatus</code> (<code>@Enumerated(EnumType.STRING)</code>),
         adres do faktury klienta jako klasa wbudowana <code>Address</code> (<code>@Embeddable</code> / <code>@Embedded</code>)</li>
+      <li><b>LAB 03:</b> relacje między tabelami: klient → projekty (<code>@ManyToOne</code> / <code>@OneToMany</code>),
+        wpis czasu → projekt i autor, zespół projektu przez encję łączącą <code>project_member</code> (wiele-do-wielu),
+        profil freelancera powiązany z kontem (<code>@OneToOne</code>); repozytorium <code>TimeEntryRepository</code>
+        z zapytaniami przez relacje; schemat bazy w <code>SCHEMAT.md</code></li>
     </ul>
   </section>
 
   <section class="card">
     <h2>1. Zajrzyjcie do bazy danych</h2>
-    <p>Aplikacja ma wbudowaną bazę H2 z tabelami <code>user_account</code>, <code>client</code>, <code>project</code> i <code>time_entry</code>.
+    <p>Aplikacja ma wbudowaną bazę H2 z tabelami <code>user_account</code>, <code>client</code>, <code>project</code>, <code>time_entry</code>,
+       <code>project_member</code> i <code>freelancer_profile</code>.
        Dane startowe pochodzą z pliku <code>data.sql</code>.</p>
     <table>
       <tr><td>JDBC URL</td><td><code>jdbc:h2:file:./data/wdtb</code></td></tr>
@@ -71,7 +76,11 @@
     </table>
     <a class="btn" href="/h2-console">Otwórz konsolę H2</a>
     <p class="muted" style="margin-top:12px">Spróbujcie zapytania:</p>
-    <pre>SELECT status, SUM(duration_minutes) FROM time_entry GROUP BY status;</pre>
+    <pre>SELECT c.name AS klient, SUM(t.duration_minutes) AS minuty
+FROM time_entry t
+JOIN project p ON p.id = t.project_id
+JOIN client c ON c.id = p.client_id
+GROUP BY c.name;</pre>
   </section>
 
   <section class="card">
