@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import pl.wsb.clockwork.client.entity.Client;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -29,4 +31,9 @@ public class Project {
 
     @Column(nullable = false)
     private boolean archived = false;
+
+    /** Klient, dla którego realizowany jest projekt (wiele projektów → jeden klient). */
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 }

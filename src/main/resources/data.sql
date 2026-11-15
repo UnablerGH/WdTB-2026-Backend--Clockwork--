@@ -15,11 +15,11 @@ insert into client (name, contact_email, tax_id, active, street, city, postal_co
     ('GreenRetail Polska',  'biuro@greenretail.pl', 'PL7811998877', true,  'ul. Półwiejska 12',   'Poznań',   '61-888', 'PL'),
     ('FinTrack Solutions',  'hello@fintrack.io',    'PL1132994455', false, 'ul. Prosta 20',       'Warszawa', '00-850', 'PL');
 
--- project
-insert into project (name, hourly_rate, currency, archived) values
-    ('Sklep B2B - moduł płatności', 160.00, 'PLN', false),
-    ('Aplikacja mobilna CRM',       185.00, 'PLN', false),
-    ('Migracja bazy danych',        150.00, 'PLN', true);
+-- project (client_id: numer wiersza z tabeli client)
+insert into project (name, hourly_rate, currency, archived, client_id) values
+    ('Sklep B2B - moduł płatności', 160.00, 'PLN', false, 1),
+    ('Aplikacja mobilna CRM',       185.00, 'PLN', false, 2),
+    ('Migracja bazy danych',        150.00, 'PLN', true,  1);
 
 -- time_entry (status: enum TimeEntryStatus zapisany jako tekst)
 insert into time_entry (task_description, work_date, duration_minutes, billable, status) values
