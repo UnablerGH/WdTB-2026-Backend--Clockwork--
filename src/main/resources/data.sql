@@ -26,3 +26,10 @@ insert into time_entry (task_description, work_date, duration_minutes, billable,
     ('Implementacja API koszyka i walidacji',     '2026-03-10', 180, true,  'INVOICED', 1, 1),
     ('Konfiguracja środowiska testowego i CI/CD', '2026-03-11', 120, true,  'APPROVED', 1, 2),
     ('Spotkanie statusowe i wycena nowego etapu', '2026-03-12', 45,  false, 'DRAFT',    2, 3);
+
+-- ===== LAB 03 · project_member (encja łącząca project ↔ user_account) =====
+insert into project_member (project_id, user_account_id, role, hourly_rate_override, joined_on) values
+    (1, 1, 'OWNER',     null,   '2026-03-01'),
+    (1, 2, 'DEVELOPER', 140.00, '2026-03-02'),
+    (2, 2, 'OWNER',     null,   '2026-03-05'),
+    (2, 3, 'REVIEWER',  120.00, '2026-03-06');
